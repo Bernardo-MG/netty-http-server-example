@@ -116,7 +116,10 @@ public final class ReactorNettyHttpServer implements Server {
             // Binds to port
             .port(port)
             // Binds route to handler
-            .route(routes -> routes.post("/", handler))
+            .route(routes -> routes.post("/**", handler))
+            .route(routes -> routes.get("/**", handler))
+            .route(routes -> routes.put("/**", handler))
+            .route(routes -> routes.delete("/**", handler))
             .bindNow();
 
         log.trace("Started server");
