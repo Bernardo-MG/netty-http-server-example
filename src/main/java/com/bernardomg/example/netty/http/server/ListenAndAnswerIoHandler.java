@@ -29,6 +29,7 @@ import java.util.function.BiFunction;
 
 import org.reactivestreams.Publisher;
 
+import io.netty.handler.codec.http.HttpHeaderNames;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.server.HttpServerRequest;
@@ -80,7 +81,7 @@ public final class ListenAndAnswerIoHandler
                 dataStream = Mono.just(responseMessage)
                     .flux()
                     .doOnNext(listener::onResponse);
-
+                response.header(HttpHeaderNames.CONTENT_TYPE, "text");
                 return response.sendString(dataStream)
                     .then();
             })
