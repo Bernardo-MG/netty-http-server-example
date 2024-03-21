@@ -86,10 +86,10 @@ If you wish to fork or modify the code, visit the [GitHub project page][scm], wh
 
 The project has been released under the [MIT License][license].
 
-[issues]: https://github.com/bernardo-mg/reactor-netty-tcp-server-example/issues
-[javadoc-develop]: https://docs.bernardomg.com/development/maven/reactor-netty-tcp-server-example/apidocs
-[javadoc-release]: https://docs.bernardomg.com/maven/reactor-netty-tcp-server-example/apidocs
+[issues]: https://github.com/bernardo-mg/reactor-netty-http-server-example/issues
+[javadoc-develop]: https://docs.bernardomg.com/development/maven/reactor-netty-http-server-example/apidocs
+[javadoc-release]: https://docs.bernardomg.com/maven/reactor-netty-http-server-example/apidocs
 [license]: https://www.opensource.org/licenses/mit-license.php
-[scm]: https://github.com/bernardo-mg/reactor-netty-tcp-server-example
-[site-develop]: https://docs.bernardomg.com/development/maven/reactor-netty-tcp-server-example
-[site-release]: https://docs.bernardomg.com/maven/reactor-netty-tcp-server-example
+[scm]: https://github.com/bernardo-mg/reactor-netty-http-server-example
+[site-develop]: https://docs.bernardomg.com/development/maven/reactor-netty-http-server-example
+[site-release]: https://docs.bernardomg.com/maven/reactor-netty-http-server-example
