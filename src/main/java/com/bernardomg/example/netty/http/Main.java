@@ -24,14 +24,14 @@
 
 package com.bernardomg.example.netty.http;
 
-import com.bernardomg.example.netty.http.cli.TcpServerMenu;
+import com.bernardomg.example.netty.http.cli.HttpServerMenu;
 
 import picocli.CommandLine;
 
 public class Main {
 
     public static void main(final String[] args) {
-        new CommandLine(new TcpServerMenu()).execute(args);
+        new CommandLine(new HttpServerMenu()).execute(args);
     }
 
     public Main() {

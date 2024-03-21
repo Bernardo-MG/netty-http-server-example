@@ -30,19 +30,19 @@ import com.bernardomg.example.netty.http.cli.version.ManifestVersionProvider;
 import picocli.CommandLine.Command;
 
 /**
- * TCP server menu.
+ * HTTP server menu.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@Command(description = "Reactor TCP server", subcommands = { StartServerCommand.class },
+@Command(description = "Reactor HTTP server", subcommands = { StartServerCommand.class },
         mixinStandardHelpOptions = true, versionProvider = ManifestVersionProvider.class)
-public class TcpServerMenu {
+public class HttpServerMenu {
 
     /**
      * Default constructor.
      */
-    public TcpServerMenu() {
+    public HttpServerMenu() {
         super();
     }
 

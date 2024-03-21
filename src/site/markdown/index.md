@@ -1,6 +1,6 @@
-# Reactor Netty TCP Server Example
+# Reactor Netty HTTP Server Example
 
-A small reactive Netty TCP server to serve as an example.
+A small reactive Netty HTTP server to serve as an example.
 
 To use the project first package it:
 
@@ -26,7 +26,7 @@ This project is part of a series of examples:
 - [Netty TCP Client Example](https://github.com/Bernardo-MG/netty-tcp-client-example)
 - [Reactor Netty TCP Client Example](https://github.com/Bernardo-MG/reactor-netty-tcp-client-example)
 - [Netty TCP Server Example](https://github.com/Bernardo-MG/netty-tcp-server-example)
-- [Reactor Netty TCP Server Example](https://github.com/Bernardo-MG/reactor-netty-http-server-example)
+- [Reactor Netty TCP Server Example](https://github.com/Bernardo-MG/reactor-netty-tcp-server-example)
 
 But there are more Netty examples:
 - [Netty TCP Proxy Example](https://github.com/Bernardo-MG/netty-tcp-proxy-example)

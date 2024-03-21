@@ -38,7 +38,7 @@ import reactor.netty.http.server.HttpServerRequest;
 import reactor.netty.http.server.HttpServerResponse;
 
 /**
- * Netty based TCP server.
+ * Reactor Netty based HTTP server.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *

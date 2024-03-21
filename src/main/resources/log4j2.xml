@@ -26,7 +26,7 @@
       <Logger name="io.netty" level="error" additivity="false">
          <AppenderRef ref="console"/>
       </Logger>
-      <Logger name="reactor.netty.tcp" level="error" additivity="false">
+      <Logger name="reactor.netty.http" level="error" additivity="false">
          <AppenderRef ref="console"/>
       </Logger>
 

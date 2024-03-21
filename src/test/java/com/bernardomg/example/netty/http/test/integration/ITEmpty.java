@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.netty.tcp.test.integration;
+package com.bernardomg.example.netty.http.test.integration;
 
 import org.junit.jupiter.api.Test;
 
