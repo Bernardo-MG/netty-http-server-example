@@ -22,12 +22,12 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.netty.tcp.cli;
+package com.bernardomg.example.netty.http.cli;
 
 import java.io.PrintWriter;
 import java.util.Objects;
 
-import com.bernardomg.example.netty.tcp.server.TransactionListener;
+import com.bernardomg.example.netty.http.server.TransactionListener;
 
 /**
  * Transaction listener which will write the context of each step into the CLI console.

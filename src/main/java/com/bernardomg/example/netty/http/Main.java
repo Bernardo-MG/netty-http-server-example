@@ -21,8 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * CLI commands for showing the version.
- */
 
-package com.bernardomg.example.netty.tcp.cli.version;
+package com.bernardomg.example.netty.http;
+
+import com.bernardomg.example.netty.http.cli.TcpServerMenu;
+
+import picocli.CommandLine;
+
+public class Main {
+
+    public static void main(final String[] args) {
+        new CommandLine(new TcpServerMenu()).execute(args);
+    }
+
+    public Main() {
+        super();
+    }
+
+}

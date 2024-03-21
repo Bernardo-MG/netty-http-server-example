@@ -22,23 +22,28 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.netty.tcp.cli.version;
+package com.bernardomg.example.netty.http.cli;
 
-import com.bernardomg.cli.picocli.version.AbstractManifestVersionProvider;
+import com.bernardomg.example.netty.http.cli.command.StartServerCommand;
+import com.bernardomg.example.netty.http.cli.version.ManifestVersionProvider;
+
+import picocli.CommandLine.Command;
 
 /**
- * Version provider based on the JAR manifest.
+ * TCP server menu.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-public final class ManifestVersionProvider extends AbstractManifestVersionProvider {
+@Command(description = "Reactor TCP server", subcommands = { StartServerCommand.class },
+        mixinStandardHelpOptions = true, versionProvider = ManifestVersionProvider.class)
+public class TcpServerMenu {
 
     /**
      * Default constructor.
      */
-    public ManifestVersionProvider() {
-        super("Netty TCP Server Example");
+    public TcpServerMenu() {
+        super();
     }
 
 }

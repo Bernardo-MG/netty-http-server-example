@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.netty.tcp.server;
+package com.bernardomg.example.netty.http.server;
 
 import java.util.Objects;
 import java.util.function.BiFunction;

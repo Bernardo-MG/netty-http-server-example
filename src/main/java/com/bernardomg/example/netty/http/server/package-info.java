@@ -21,41 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package com.bernardomg.example.netty.tcp.server;
-
 /**
- * Transaction listener. Allows reacting to the events of a message transaction.
- *
- * @author Bernardo Mart&iacute;nez Garrido
- *
+ * Server classes.
  */
-public interface TransactionListener {
 
-    /**
-     * Reacts to a request message being received by the server from the client.
-     *
-     * @param message
-     *            request message received
-     */
-    public void onRequest(final String message);
-
-    /**
-     * Reacts to a response message being sent by the server to the client.
-     *
-     * @param message
-     *            response message sent
-     */
-    public void onResponse(final String message);
-
-    /**
-     * Reacts to the start event.
-     */
-    public void onStart();
-
-    /**
-     * Reacts to the stop event.
-     */
-    public void onStop();
-
-}
+package com.bernardomg.example.netty.http.server;

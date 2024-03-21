@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 /**
- * CLI commands.
+ * Project root package. Contains the executable class.
  */
 
-package com.bernardomg.example.netty.tcp.cli.command;
+package com.bernardomg.example.netty.http;

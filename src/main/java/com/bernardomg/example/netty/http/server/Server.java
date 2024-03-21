@@ -21,8 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * CLI.
- */
 
-package com.bernardomg.example.netty.tcp.cli;
+package com.bernardomg.example.netty.http.server;
+
+/**
+ * Generic server. Supports starting and stopping it.
+ *
+ * @author Bernardo Mart&iacute;nez Garrido
+ *
+ */
+public interface Server {
+
+    /**
+     * Keeps the server waiting for requests.
+     */
+    public void listen();
+
+    /**
+     * Starts the server.
+     */
+    public void start();
+
+    /**
+     * Stops the server.
+     */
+    public void stop();
+
+}

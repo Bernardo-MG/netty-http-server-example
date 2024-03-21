@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.netty.tcp.cli.command;
+package com.bernardomg.example.netty.http.cli.command;
 
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -31,10 +31,10 @@ import java.nio.charset.Charset;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
 
-import com.bernardomg.example.netty.tcp.cli.CliWriterTransactionListener;
-import com.bernardomg.example.netty.tcp.cli.version.ManifestVersionProvider;
-import com.bernardomg.example.netty.tcp.server.ReactorNettyTcpServer;
-import com.bernardomg.example.netty.tcp.server.TransactionListener;
+import com.bernardomg.example.netty.http.cli.CliWriterTransactionListener;
+import com.bernardomg.example.netty.http.cli.version.ManifestVersionProvider;
+import com.bernardomg.example.netty.http.server.ReactorNettyTcpServer;
+import com.bernardomg.example.netty.http.server.TransactionListener;
 
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Help;
