@@ -33,7 +33,7 @@ import org.apache.logging.log4j.core.config.Configurator;
 
 import com.bernardomg.example.netty.http.cli.CliWriterTransactionListener;
 import com.bernardomg.example.netty.http.cli.version.ManifestVersionProvider;
-import com.bernardomg.example.netty.http.server.ReactorNettyTcpServer;
+import com.bernardomg.example.netty.http.server.ReactorNettyHttpServer;
 import com.bernardomg.example.netty.http.server.TransactionListener;
 
 import picocli.CommandLine.Command;
@@ -93,9 +93,9 @@ public final class StartServerCommand implements Runnable {
 
     @Override
     public final void run() {
-        final PrintWriter           writer;
-        final ReactorNettyTcpServer server;
-        final TransactionListener   listener;
+        final PrintWriter            writer;
+        final ReactorNettyHttpServer server;
+        final TransactionListener    listener;
 
         if (debug) {
             activateDebugLog();
@@ -112,7 +112,7 @@ public final class StartServerCommand implements Runnable {
 
         // Create server
         listener = new CliWriterTransactionListener(port, writer);
-        server = new ReactorNettyTcpServer(port, response, listener);
+        server = new ReactorNettyHttpServer(port, response, listener);
         server.setWiretap(debug);
 
         // Start server

@@ -33,9 +33,9 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import reactor.netty.DisposableServer;
-import reactor.netty.NettyInbound;
-import reactor.netty.NettyOutbound;
-import reactor.netty.tcp.TcpServer;
+import reactor.netty.http.server.HttpServer;
+import reactor.netty.http.server.HttpServerRequest;
+import reactor.netty.http.server.HttpServerResponse;
 
 /**
  * Netty based TCP server.
@@ -44,34 +44,34 @@ import reactor.netty.tcp.TcpServer;
  *
  */
 @Slf4j
-public final class ReactorNettyTcpServer implements Server {
+public final class ReactorNettyHttpServer implements Server {
 
     /**
      * IO handler for the server.
      */
-    private final BiFunction<NettyInbound, NettyOutbound, Publisher<Void>> handler;
+    private final BiFunction<HttpServerRequest, HttpServerResponse, Publisher<Void>> handler;
 
     /**
      * Transaction listener. Extension hook which allows reacting to the transaction events.
      */
-    private final TransactionListener                                      listener;
+    private final TransactionListener                                                listener;
 
     /**
      * Port which the server will listen to.
      */
-    private final Integer                                                  port;
+    private final Integer                                                            port;
 
     /**
      * Server for closing the connection.
      */
-    private DisposableServer                                               server;
+    private DisposableServer                                                         server;
 
     /**
      * Wiretap flag.
      */
     @Setter
     @NonNull
-    private Boolean                                                        wiretap = false;
+    private Boolean                                                                  wiretap = false;
 
     /**
      * Constructs a server for the given port. The transaction listener will react to events when calling the server.
@@ -83,7 +83,7 @@ public final class ReactorNettyTcpServer implements Server {
      * @param lst
      *            transaction listener
      */
-    public ReactorNettyTcpServer(final Integer prt, final String response, final TransactionListener lst) {
+    public ReactorNettyHttpServer(final Integer prt, final String response, final TransactionListener lst) {
         super();
 
         port = Objects.requireNonNull(prt);
@@ -110,13 +110,13 @@ public final class ReactorNettyTcpServer implements Server {
 
         listener.onStart();
 
-        server = TcpServer.create()
+        server = HttpServer.create()
             // Wiretap
             .wiretap(wiretap)
-            // Adds request handler
-            .handle(handler)
             // Binds to port
             .port(port)
+            // Binds route to handler
+            .route(routes -> routes.post("/", handler))
             .bindNow();
 
         log.trace("Started server");

@@ -31,8 +31,8 @@ import org.reactivestreams.Publisher;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
-import reactor.netty.NettyInbound;
-import reactor.netty.NettyOutbound;
+import reactor.netty.http.server.HttpServerRequest;
+import reactor.netty.http.server.HttpServerResponse;
 
 /**
  * I/O handler which sends all messages to the listener, and also answers back with a predefined message.
@@ -41,7 +41,8 @@ import reactor.netty.NettyOutbound;
  *
  */
 @Slf4j
-public final class ListenAndAnswerIoHandler implements BiFunction<NettyInbound, NettyOutbound, Publisher<Void>> {
+public final class ListenAndAnswerIoHandler
+        implements BiFunction<HttpServerRequest, HttpServerResponse, Publisher<Void>> {
 
     /**
      * Transaction listener. Reacts to events during the request.
@@ -61,7 +62,7 @@ public final class ListenAndAnswerIoHandler implements BiFunction<NettyInbound, 
     }
 
     @Override
-    public final Publisher<Void> apply(final NettyInbound request, final NettyOutbound response) {
+    public Publisher<Void> apply(final HttpServerRequest request, final HttpServerResponse response) {
         return request.receive()
             .asString()
             // Log request
