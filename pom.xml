@@ -25,7 +25,7 @@
    <name>Reactor Netty HTTP Server Example</name>
    <description>An example setting up a Reactor Netty HTTP server.</description>
    <url>https://github.com/bernardo-mg/reactor-netty-http-server-example</url>
-   <inceptionYear>2023</inceptionYear>
+   <inceptionYear>2024</inceptionYear>
 
    <licenses>
       <license>
