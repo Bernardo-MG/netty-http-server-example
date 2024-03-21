@@ -26,7 +26,7 @@ This project is part of a series of examples:
 - [Netty TCP Client Example](https://github.com/Bernardo-MG/netty-tcp-client-example)
 - [Reactor Netty TCP Client Example](https://github.com/Bernardo-MG/reactor-netty-tcp-client-example)
 - [Netty TCP Server Example](https://github.com/Bernardo-MG/netty-tcp-server-example)
-- [Reactor Netty TCP Server Example](https://github.com/Bernardo-MG/reactor-netty-tcp-server-example)
+- [Reactor Netty TCP Server Example](https://github.com/Bernardo-MG/reactor-netty-http-server-example)
 
 But there are more Netty examples:
 - [Netty TCP Proxy Example](https://github.com/Bernardo-MG/netty-tcp-proxy-example)
