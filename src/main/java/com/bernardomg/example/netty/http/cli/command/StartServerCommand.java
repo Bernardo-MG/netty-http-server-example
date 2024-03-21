@@ -131,7 +131,7 @@ public final class StartServerCommand implements Runnable {
      */
     private final void activateDebugLog() {
         Configurator.setLevel("com.bernardomg.example", Level.DEBUG);
-        Configurator.setLevel("reactor.netty.tcp", Level.DEBUG);
+        Configurator.setLevel("reactor.netty.http", Level.DEBUG);
     }
 
 }
