@@ -20,30 +20,35 @@ To show other commands:
 java -jar target/server.jar -h
 ```
 
-This project is part of a series of examples:
-- [Netty TCP Client Example](https://github.com/Bernardo-MG/netty-tcp-client-example)
-- [Reactor Netty TCP Client Example](https://github.com/Bernardo-MG/reactor-netty-tcp-client-example)
-- [Netty TCP Server Example](https://github.com/Bernardo-MG/netty-tcp-server-example)
-- [Reactor Netty TCP Server Example](https://github.com/Bernardo-MG/reactor-netty-tcp-server-example)
-
-But there are more Netty examples:
-- [Netty TCP Proxy Example](https://github.com/Bernardo-MG/netty-tcp-proxy-example)
-- [Reactor Netty TCP Proxy Example](https://github.com/Bernardo-MG/reactor-netty-tcp-proxy-example)
-
 [![Release docs](https://img.shields.io/badge/docs-release-blue.svg)][site-release]
 [![Development docs](https://img.shields.io/badge/docs-develop-blue.svg)][site-develop]
 
 [![Release javadocs](https://img.shields.io/badge/javadocs-release-blue.svg)][javadoc-release]
 [![Development javadocs](https://img.shields.io/badge/javadocs-develop-blue.svg)][javadoc-develop]
 
+## Other Netty examples
+
+### TCP
+
+- [Netty TCP Client Example](https://github.com/Bernardo-MG/netty-tcp-client-example)
+- [Netty TCP Server Example](https://github.com/Bernardo-MG/netty-tcp-server-example)
+- [Netty TCP Proxy Example](https://github.com/Bernardo-MG/netty-tcp-proxy-example)
+
+### TCP Reactive
+
+- [Reactor Netty TCP Client Example](https://github.com/Bernardo-MG/reactor-netty-tcp-client-example)
+- [Reactor Netty TCP Server Example](https://github.com/Bernardo-MG/reactor-netty-tcp-server-example)
+- [Reactor Netty TCP Proxy Example](https://github.com/Bernardo-MG/reactor-netty-tcp-proxy-example)
+
+### HTTP
+
+- [Netty HTTP Client Example](https://github.com/Bernardo-MG/reactor-netty-http-client-example)
+- [Netty HTTP Server Example](https://github.com/Bernardo-MG/reactor-netty-http-server-example)
+
 ## Features
 
-- Reactor Netty TCP server
+- Reactor Netty HTTP server
 - Command Line Client
-
-## References
-
-- [Netty-Simple-UDP-TCP-server-client](https://github.com/narkhedesam/Netty-Simple-UDP-TCP-server-client)
 
 ## Documentation
 
@@ -86,10 +91,10 @@ If you wish to fork or modify the code, visit the [GitHub project page][scm], wh
 
 The project has been released under the [MIT License][license].
 
-[issues]: https://github.com/bernardo-mg/reactor-netty-tcp-server-example/issues
-[javadoc-develop]: https://docs.bernardomg.com/development/maven/reactor-netty-tcp-server-example/apidocs
-[javadoc-release]: https://docs.bernardomg.com/maven/reactor-netty-tcp-server-example/apidocs
+[issues]: https://github.com/bernardo-mg/reactor-netty-http-server-example/issues
+[javadoc-develop]: https://docs.bernardomg.com/development/maven/reactor-netty-http-server-example/apidocs
+[javadoc-release]: https://docs.bernardomg.com/maven/reactor-netty-http-server-example/apidocs
 [license]: https://www.opensource.org/licenses/mit-license.php
-[scm]: https://github.com/bernardo-mg/reactor-netty-tcp-server-example
-[site-develop]: https://docs.bernardomg.com/development/maven/reactor-netty-tcp-server-example
-[site-release]: https://docs.bernardomg.com/maven/reactor-netty-tcp-server-example
+[scm]: https://github.com/bernardo-mg/reactor-netty-http-server-example
+[site-develop]: https://docs.bernardomg.com/development/maven/reactor-netty-http-server-example
+[site-release]: https://docs.bernardomg.com/maven/reactor-netty-http-server-example
