@@ -31,6 +31,7 @@
 .loadpath
 .metadata
 .project
+.factorypath
 .settings/
 bin/**
 tmp/**
@@ -44,17 +45,6 @@ local.properties
 /src/main/resources/rebel.xml
 .springBeans
 
-# IntelliJ Idea files #
-.idea
-*.iml
-
-# Visual Studio #
-.vscode/
-.factorypath
-
-# Docker
-.env
-
 # Windows files #
 Thumbs.db
 Desktop.ini
@@ -65,3 +55,7 @@ Desktop.ini
 ._*
 .Spotlight-V100
 .Trashes
+/target/
+
+# Shade plugin #
+dependency-reduced-pom.xml
