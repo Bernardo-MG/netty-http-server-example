@@ -47,12 +47,8 @@ java -jar target/server.jar -h
 
 ## Features
 
-- Reactor Netty TCP server
+- Reactor Netty HTTP server
 - Command Line Client
-
-## References
-
-- [Netty-Simple-UDP-TCP-server-client](https://github.com/narkhedesam/Netty-Simple-UDP-TCP-server-client)
 
 ## Documentation
 
