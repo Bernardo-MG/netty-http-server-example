@@ -29,7 +29,6 @@ import java.util.function.BiFunction;
 
 import org.reactivestreams.Publisher;
 
-import lombok.NonNull;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import reactor.netty.DisposableServer;
@@ -70,8 +69,7 @@ public final class ReactorNettyHttpServer implements Server {
      * Wiretap flag.
      */
     @Setter
-    @NonNull
-    private Boolean                                                                  wiretap = false;
+    private boolean                                                                  wiretap = false;
 
     /**
      * Constructs a server for the given port. The transaction listener will react to events when calling the server.

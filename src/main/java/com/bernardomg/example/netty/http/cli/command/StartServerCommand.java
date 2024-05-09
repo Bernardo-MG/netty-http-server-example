@@ -56,7 +56,7 @@ public final class StartServerCommand implements Runnable {
      * Debug flag. Shows debug logs.
      */
     @Option(names = { "--debug" }, paramLabel = "flag", description = "Enable debug logs.", defaultValue = "false")
-    private Boolean     debug;
+    private boolean     debug;
 
     /**
      * Port to listen.
@@ -82,7 +82,7 @@ public final class StartServerCommand implements Runnable {
      */
     @Option(names = { "--verbose" }, paramLabel = "flag", description = "Print information to console.",
             defaultValue = "true", showDefaultValue = Help.Visibility.ALWAYS)
-    private Boolean     verbose;
+    private boolean     verbose;
 
     /**
      * Default constructor.
