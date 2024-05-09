@@ -45,14 +45,14 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Spec;
 
 /**
- * Start server command.
+ * Start server with response command. This creates a server which listens for requests, and responds with a defined message.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@Command(name = "start", description = "Starts an HTTP server", mixinStandardHelpOptions = true,
+@Command(name = "start", description = "Starts an HTTP server with a response", mixinStandardHelpOptions = true,
         versionProvider = ManifestVersionProvider.class)
-public final class StartServerCommand implements Runnable {
+public final class StartServerWithResponseCommand implements Runnable {
 
     /**
      * Debug flag. Shows debug logs.
@@ -89,7 +89,7 @@ public final class StartServerCommand implements Runnable {
     /**
      * Default constructor.
      */
-    public StartServerCommand() {
+    public StartServerWithResponseCommand() {
         super();
     }
 
