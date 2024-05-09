@@ -62,7 +62,7 @@ public final class ListenAndAnswerIoHandler
     }
 
     @Override
-    public Publisher<Void> handle(final HttpServerRequest request, final HttpServerResponse response) {
+    public final Publisher<Void> handle(final HttpServerRequest request, final HttpServerResponse response) {
         return request.receive()
             .asString()
             // Log request
