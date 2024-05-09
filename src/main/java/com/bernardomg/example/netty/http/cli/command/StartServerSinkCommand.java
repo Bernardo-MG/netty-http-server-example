@@ -86,12 +86,20 @@ public final class StartServerSinkCommand implements Runnable {
         super();
     }
 
+    /**
+     * Activates debug logs for the application.
+     */
+    private final void activateDebugLog() {
+        Configurator.setLevel("com.bernardomg.example", Level.DEBUG);
+        Configurator.setLevel("reactor.netty.http", Level.DEBUG);
+    }
+
     @Override
     public final void run() {
         final PrintWriter            writer;
         final ReactorNettyHttpServer server;
         final TransactionListener    listener;
-        final IoHandler handler;
+        final IoHandler              handler;
 
         if (debug) {
             activateDebugLog();
@@ -120,14 +128,6 @@ public final class StartServerSinkCommand implements Runnable {
 
         // Close writer
         writer.close();
-    }
-
-    /**
-     * Activates debug logs for the application.
-     */
-    private final void activateDebugLog() {
-        Configurator.setLevel("com.bernardomg.example", Level.DEBUG);
-        Configurator.setLevel("reactor.netty.http", Level.DEBUG);
     }
 
 }

@@ -34,13 +34,15 @@ import reactor.netty.http.server.HttpServerResponse;
  */
 public interface IoHandler {
 
-	/**
-	 * Handle the operation.
-	 *
-	 * @param request  HTTP request
-	 * @param response HTTP response
-	 * @return {@code Publisher} prepared for the I/O operation
-	 */
-	public Publisher<Void> handle(final HttpServerRequest request, final HttpServerResponse response);
+    /**
+     * Handle the operation.
+     *
+     * @param request
+     *            HTTP request
+     * @param response
+     *            HTTP response
+     * @return {@code Publisher} prepared for the I/O operation
+     */
+    public Publisher<Void> handle(final HttpServerRequest request, final HttpServerResponse response);
 
 }

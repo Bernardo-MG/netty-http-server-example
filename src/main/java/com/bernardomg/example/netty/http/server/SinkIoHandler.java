@@ -39,8 +39,7 @@ import reactor.netty.http.server.HttpServerResponse;
  *
  */
 @Slf4j
-public final class SinkIoHandler
-        implements IoHandler {
+public final class SinkIoHandler implements IoHandler {
 
     /**
      * Transaction listener. Reacts to events during the request.

@@ -41,8 +41,7 @@ import reactor.netty.http.server.HttpServerResponse;
  *
  */
 @Slf4j
-public final class ListenAndAnswerIoHandler
-        implements IoHandler {
+public final class ListenAndAnswerIoHandler implements IoHandler {
 
     /**
      * Transaction listener. Reacts to events during the request.

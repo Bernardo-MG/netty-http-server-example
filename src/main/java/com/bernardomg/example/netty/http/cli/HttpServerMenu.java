@@ -36,7 +36,8 @@ import picocli.CommandLine.Command;
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@Command(description = "Reactor HTTP server", subcommands = { StartServerWithResponseCommand.class, StartServerSinkCommand.class },
+@Command(description = "Reactor HTTP server",
+        subcommands = { StartServerWithResponseCommand.class, StartServerSinkCommand.class },
         mixinStandardHelpOptions = true, versionProvider = ManifestVersionProvider.class)
 public class HttpServerMenu {
 

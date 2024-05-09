@@ -45,7 +45,8 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Spec;
 
 /**
- * Start server with response command. This creates a server which listens for requests, and responds with a defined message.
+ * Start server with response command. This creates a server which listens for requests, and responds with a defined
+ * message.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
@@ -93,12 +94,20 @@ public final class StartServerWithResponseCommand implements Runnable {
         super();
     }
 
+    /**
+     * Activates debug logs for the application.
+     */
+    private final void activateDebugLog() {
+        Configurator.setLevel("com.bernardomg.example", Level.DEBUG);
+        Configurator.setLevel("reactor.netty.http", Level.DEBUG);
+    }
+
     @Override
     public final void run() {
         final PrintWriter            writer;
         final ReactorNettyHttpServer server;
         final TransactionListener    listener;
-        final IoHandler handler;
+        final IoHandler              handler;
 
         if (debug) {
             activateDebugLog();
@@ -127,14 +136,6 @@ public final class StartServerWithResponseCommand implements Runnable {
 
         // Close writer
         writer.close();
-    }
-
-    /**
-     * Activates debug logs for the application.
-     */
-    private final void activateDebugLog() {
-        Configurator.setLevel("com.bernardomg.example", Level.DEBUG);
-        Configurator.setLevel("reactor.netty.http", Level.DEBUG);
     }
 
 }
