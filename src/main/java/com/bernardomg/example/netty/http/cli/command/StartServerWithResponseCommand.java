@@ -33,6 +33,8 @@ import org.apache.logging.log4j.core.config.Configurator;
 
 import com.bernardomg.example.netty.http.cli.TransactionPrinterListener;
 import com.bernardomg.example.netty.http.cli.version.ManifestVersionProvider;
+import com.bernardomg.example.netty.http.server.IoHandler;
+import com.bernardomg.example.netty.http.server.ListenAndAnswerIoHandler;
 import com.bernardomg.example.netty.http.server.ReactorNettyHttpServer;
 import com.bernardomg.example.netty.http.server.TransactionListener;
 
@@ -43,14 +45,14 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Spec;
 
 /**
- * Start server command.
+ * Start server with response command. This creates a server which listens for requests, and responds with a defined message.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@Command(name = "start", description = "Starts an HTTP server", mixinStandardHelpOptions = true,
+@Command(name = "start", description = "Starts an HTTP server with a response", mixinStandardHelpOptions = true,
         versionProvider = ManifestVersionProvider.class)
-public final class StartServerCommand implements Runnable {
+public final class StartServerWithResponseCommand implements Runnable {
 
     /**
      * Debug flag. Shows debug logs.
@@ -87,7 +89,7 @@ public final class StartServerCommand implements Runnable {
     /**
      * Default constructor.
      */
-    public StartServerCommand() {
+    public StartServerWithResponseCommand() {
         super();
     }
 
@@ -96,6 +98,7 @@ public final class StartServerCommand implements Runnable {
         final PrintWriter            writer;
         final ReactorNettyHttpServer server;
         final TransactionListener    listener;
+        final IoHandler handler;
 
         if (debug) {
             activateDebugLog();
@@ -112,8 +115,8 @@ public final class StartServerCommand implements Runnable {
 
         // Create server
         listener = new TransactionPrinterListener(port, writer);
-        server = new ReactorNettyHttpServer(port, response, listener);
-        server.setWiretap(debug);
+        handler = new ListenAndAnswerIoHandler(response, listener);
+        server = new ReactorNettyHttpServer(port, listener, handler, debug);
 
         // Start server
         server.start();

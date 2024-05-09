@@ -25,16 +25,11 @@
 package com.bernardomg.example.netty.http.server;
 
 import java.util.Objects;
-import java.util.function.BiFunction;
-
-import org.reactivestreams.Publisher;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import reactor.netty.DisposableServer;
 import reactor.netty.http.server.HttpServer;
-import reactor.netty.http.server.HttpServerRequest;
-import reactor.netty.http.server.HttpServerResponse;
 
 /**
  * Reactor Netty based HTTP server.
@@ -48,7 +43,7 @@ public final class ReactorNettyHttpServer implements Server {
     /**
      * IO handler for the server.
      */
-    private final BiFunction<HttpServerRequest, HttpServerResponse, Publisher<Void>> handler;
+    private final IoHandler handler;
 
     /**
      * Transaction listener. Extension hook which allows reacting to the transaction events.
@@ -69,25 +64,30 @@ public final class ReactorNettyHttpServer implements Server {
      * Wiretap flag.
      */
     @Setter
-    private boolean                                                                  wiretap = false;
+    private boolean                                                                  wiretap;
 
     /**
      * Constructs a server for the given port. The transaction listener will react to events when calling the server.
      *
      * @param prt
      *            port to listen for
-     * @param response
-     *            response for the request
      * @param lst
      *            transaction listener
+     * @param ioh
+     *            I/O handler
+     * @param wtap
+     *            wiretap flag
      */
-    public ReactorNettyHttpServer(final Integer prt, final String response, final TransactionListener lst) {
+    public ReactorNettyHttpServer(final Integer prt, final TransactionListener lst,
+    		final IoHandler ioh,
+            final boolean wtap) {
         super();
 
         port = Objects.requireNonNull(prt);
         listener = Objects.requireNonNull(lst);
+        wiretap = Objects.requireNonNull(wtap);
 
-        handler = new ListenAndAnswerIoHandler(response, listener);
+        handler = ioh;
     }
 
     @Override
