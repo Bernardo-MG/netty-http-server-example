@@ -33,6 +33,8 @@ import org.apache.logging.log4j.core.config.Configurator;
 
 import com.bernardomg.example.netty.http.cli.TransactionPrinterListener;
 import com.bernardomg.example.netty.http.cli.version.ManifestVersionProvider;
+import com.bernardomg.example.netty.http.server.IoHandler;
+import com.bernardomg.example.netty.http.server.ListenAndAnswerIoHandler;
 import com.bernardomg.example.netty.http.server.ReactorNettyHttpServer;
 import com.bernardomg.example.netty.http.server.TransactionListener;
 
@@ -56,7 +58,7 @@ public final class StartServerCommand implements Runnable {
      * Debug flag. Shows debug logs.
      */
     @Option(names = { "--debug" }, paramLabel = "flag", description = "Enable debug logs.", defaultValue = "false")
-    private Boolean     debug;
+    private boolean     debug;
 
     /**
      * Port to listen.
@@ -82,7 +84,7 @@ public final class StartServerCommand implements Runnable {
      */
     @Option(names = { "--verbose" }, paramLabel = "flag", description = "Print information to console.",
             defaultValue = "true", showDefaultValue = Help.Visibility.ALWAYS)
-    private Boolean     verbose;
+    private boolean     verbose;
 
     /**
      * Default constructor.
@@ -96,6 +98,7 @@ public final class StartServerCommand implements Runnable {
         final PrintWriter            writer;
         final ReactorNettyHttpServer server;
         final TransactionListener    listener;
+        final IoHandler handler;
 
         if (debug) {
             activateDebugLog();
@@ -112,8 +115,8 @@ public final class StartServerCommand implements Runnable {
 
         // Create server
         listener = new TransactionPrinterListener(port, writer);
-        server = new ReactorNettyHttpServer(port, response, listener);
-        server.setWiretap(debug);
+        handler = new ListenAndAnswerIoHandler(response, listener);
+        server = new ReactorNettyHttpServer(port, listener, handler, debug);
 
         // Start server
         server.start();
