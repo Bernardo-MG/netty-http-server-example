@@ -40,98 +40,92 @@ import reactor.netty.http.server.HttpServer;
 @Slf4j
 public final class ReactorNettyHttpServer implements Server {
 
-    /**
-     * IO handler for the server.
-     */
-    private final IoHandler handler;
+	/**
+	 * IO handler for the server.
+	 */
+	private final IoHandler handler;
 
-    /**
-     * Transaction listener. Extension hook which allows reacting to the transaction events.
-     */
-    private final TransactionListener                                                listener;
+	/**
+	 * Transaction listener. Extension hook which allows reacting to the transaction
+	 * events.
+	 */
+	private final TransactionListener listener;
 
-    /**
-     * Port which the server will listen to.
-     */
-    private final Integer                                                            port;
+	/**
+	 * Port which the server will listen to.
+	 */
+	private final Integer port;
 
-    /**
-     * Server for closing the connection.
-     */
-    private DisposableServer                                                         server;
+	/**
+	 * Server for closing the connection.
+	 */
+	private DisposableServer server;
 
-    /**
-     * Wiretap flag.
-     */
-    @Setter
-    private boolean                                                                  wiretap;
+	/**
+	 * Wiretap flag.
+	 */
+	@Setter
+	private boolean wiretap;
 
-    /**
-     * Constructs a server for the given port. The transaction listener will react to events when calling the server.
-     *
-     * @param prt
-     *            port to listen for
-     * @param lst
-     *            transaction listener
-     * @param ioh
-     *            I/O handler
-     * @param wtap
-     *            wiretap flag
-     */
-    public ReactorNettyHttpServer(final Integer prt, final TransactionListener lst,
-    		final IoHandler ioh,
-            final boolean wtap) {
-        super();
+	/**
+	 * Constructs a server for the given port. The transaction listener will react
+	 * to events when calling the server.
+	 *
+	 * @param prt  port to listen for
+	 * @param lst  transaction listener
+	 * @param ioh  I/O handler
+	 * @param wtap wiretap flag
+	 */
+	public ReactorNettyHttpServer(final Integer prt, final TransactionListener lst, final IoHandler ioh,
+			final boolean wtap) {
+		super();
 
-        port = Objects.requireNonNull(prt);
-        listener = Objects.requireNonNull(lst);
-        wiretap = Objects.requireNonNull(wtap);
+		port = Objects.requireNonNull(prt);
+		listener = Objects.requireNonNull(lst);
+		wiretap = Objects.requireNonNull(wtap);
 
-        handler = ioh;
-    }
+		handler = Objects.requireNonNull(ioh);
+	}
 
-    @Override
-    public final void listen() {
-        log.trace("Starting server listening");
+	@Override
+	public final void listen() {
+		log.trace("Starting server listening");
 
-        server.onDispose()
-            .block();
+		server.onDispose().block();
 
-        log.trace("Stopped server listening");
-    }
+		log.trace("Stopped server listening");
+	}
 
-    @Override
-    public final void start() {
-        log.trace("Starting server");
+	@Override
+	public final void start() {
+		log.trace("Starting server");
 
-        log.debug("Binding to port {}", port);
+		log.debug("Binding to port {}", port);
 
-        listener.onStart();
+		listener.onStart();
 
-        server = HttpServer.create()
-            // Wiretap
-            .wiretap(wiretap)
-            // Binds to port
-            .port(port)
-            // Binds route to handler
-            .route(routes -> routes.post("/**", handler::handle)
-                .get("/**", handler::handle)
-                .put("/**", handler::handle)
-                .delete("/**", handler::handle))
-            .bindNow();
+		server = HttpServer.create()
+				// Wiretap
+				.wiretap(wiretap)
+				// Binds to port
+				.port(port)
+				// Binds route to handler
+				.route(routes -> routes.post("/**", handler::handle).get("/**", handler::handle)
+						.put("/**", handler::handle).delete("/**", handler::handle))
+				.bindNow();
 
-        log.trace("Started server");
-    }
+		log.trace("Started server");
+	}
 
-    @Override
-    public final void stop() {
-        log.trace("Stopping server");
+	@Override
+	public final void stop() {
+		log.trace("Stopping server");
 
-        listener.onStop();
+		listener.onStop();
 
-        server.dispose();
+		server.dispose();
 
-        log.trace("Stopped server");
-    }
+		log.trace("Stopped server");
+	}
 
 }
