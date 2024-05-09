@@ -33,7 +33,7 @@ import reactor.netty.http.server.HttpServerRequest;
 import reactor.netty.http.server.HttpServerResponse;
 
 /**
- * I/O handler which sends all recieved messages to the listener, but responds nothing.
+ * I/O handler which sends all received messages to the listener, but responds nothing.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
