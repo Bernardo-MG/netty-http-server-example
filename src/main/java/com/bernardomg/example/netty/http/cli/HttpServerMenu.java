@@ -24,8 +24,7 @@
 
 package com.bernardomg.example.netty.http.cli;
 
-import com.bernardomg.example.netty.http.cli.command.StartServerSinkCommand;
-import com.bernardomg.example.netty.http.cli.command.StartServerWithResponseCommand;
+import com.bernardomg.example.netty.http.cli.command.StartServerCommand;
 import com.bernardomg.example.netty.http.cli.version.ManifestVersionProvider;
 
 import picocli.CommandLine.Command;
@@ -36,8 +35,7 @@ import picocli.CommandLine.Command;
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@Command(description = "Reactor HTTP server",
-        subcommands = { StartServerWithResponseCommand.class, StartServerSinkCommand.class },
+@Command(description = "Reactor HTTP server", subcommands = { StartServerCommand.class },
         mixinStandardHelpOptions = true, versionProvider = ManifestVersionProvider.class)
 public class HttpServerMenu {
 
