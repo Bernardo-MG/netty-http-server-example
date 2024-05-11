@@ -31,9 +31,12 @@ import java.nio.charset.Charset;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
 
-import com.bernardomg.example.netty.http.cli.CliWriterTransactionListener;
+import com.bernardomg.example.netty.http.cli.TransactionPrinterListener;
 import com.bernardomg.example.netty.http.cli.version.ManifestVersionProvider;
+import com.bernardomg.example.netty.http.server.IoHandler;
+import com.bernardomg.example.netty.http.server.ListenAndAnswerIoHandler;
 import com.bernardomg.example.netty.http.server.ReactorNettyHttpServer;
+import com.bernardomg.example.netty.http.server.SinkIoHandler;
 import com.bernardomg.example.netty.http.server.TransactionListener;
 
 import picocli.CommandLine.Command;
@@ -43,7 +46,7 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Spec;
 
 /**
- * Start server command.
+ * Start server. This creates a server which listens for requests, if the response is defined it will also answer them.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
@@ -56,7 +59,7 @@ public final class StartServerCommand implements Runnable {
      * Debug flag. Shows debug logs.
      */
     @Option(names = { "--debug" }, paramLabel = "flag", description = "Enable debug logs.", defaultValue = "false")
-    private Boolean     debug;
+    private boolean     debug;
 
     /**
      * Port to listen.
@@ -68,7 +71,7 @@ public final class StartServerCommand implements Runnable {
      * Response to return.
      */
     @Option(names = { "-r", "--response" }, paramLabel = "response",
-            description = "Response to send back after receiving a request.", defaultValue = "Acknowledged")
+            description = "Response to send back after receiving a request.")
     private String      response;
 
     /**
@@ -82,7 +85,7 @@ public final class StartServerCommand implements Runnable {
      */
     @Option(names = { "--verbose" }, paramLabel = "flag", description = "Print information to console.",
             defaultValue = "true", showDefaultValue = Help.Visibility.ALWAYS)
-    private Boolean     verbose;
+    private boolean     verbose;
 
     /**
      * Default constructor.
@@ -96,6 +99,7 @@ public final class StartServerCommand implements Runnable {
         final PrintWriter            writer;
         final ReactorNettyHttpServer server;
         final TransactionListener    listener;
+        final IoHandler              handler;
 
         if (debug) {
             activateDebugLog();
@@ -111,9 +115,14 @@ public final class StartServerCommand implements Runnable {
         }
 
         // Create server
-        listener = new CliWriterTransactionListener(port, writer);
-        server = new ReactorNettyHttpServer(port, response, listener);
-        server.setWiretap(debug);
+        listener = new TransactionPrinterListener(port, writer);
+        if (response == null) {
+            // Missing response, will just sink requests
+            handler = new SinkIoHandler(listener);
+        } else {
+            handler = new ListenAndAnswerIoHandler(response, listener);
+        }
+        server = new ReactorNettyHttpServer(port, listener, handler, debug);
 
         // Start server
         server.start();
